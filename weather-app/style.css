@@ -127,6 +127,12 @@ body {
 	margin: 0;
 }
 
+.card h4 {
+	font-size: var(--font-md);
+	color: #666;
+	margin: 0;
+}
+
 .card .temp {
 	font-size: var(--font-2xl);
 	font-weight: bold;
@@ -136,4 +142,10 @@ body {
 .card .wind {
 	font-size: var(--font-md);
 	margin: 0;
+}
+
+.card img.city-image {
+	width: 100%;
+	height: auto;
+	border-radius: var(--space-4);
 }

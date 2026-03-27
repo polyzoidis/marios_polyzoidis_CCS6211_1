@@ -58,7 +58,9 @@ async function renderCards() {
 		card.classList.add("card")
 
 		card.innerHTML = `
+            <img class="city-image" src="${city.src}" alt="${city.name}" />
             <h3>${city.name}</h3>
+            <h4>${city.country}</h4>
             <p class="temp">${temp}°C</p>
             <p class="wind">Wind: ${wind} km/h</p>
         `
