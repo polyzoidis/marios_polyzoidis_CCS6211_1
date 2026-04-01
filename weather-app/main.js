@@ -40,7 +40,53 @@ async function getWeather(city) {
 		return data
 	} catch (error) {
 		console.error("Error:", error)
+		return null
 	}
+}
+
+async function renderSingleCard(city, data, index) {
+	const card = document.createElement("div")
+	card.classList.add("card")
+
+	if (data === null) {
+		card.classList.add("error-card")
+		card.innerHTML = `
+            <img class="city-image" src="${city.src}" alt="${city.name}" />
+			<div class="city-info-section">
+				<h3>${city.name}</h3>
+				<h4>${city.country}</h4>
+				<p class="error-message">Couldn't load weather data</p>
+				<button class="retry-btn">Retry</button>
+			</div>
+        `
+
+		card.querySelector(".retry-btn").addEventListener("click", async () => {
+			card.classList.add("skeleton-card")
+			card.innerHTML = `
+				<div class="line title"></div>
+				<div class="line temp"></div>
+				<div class="line wind"></div>
+			`
+
+			const result = await getWeather(city)
+			const newCard = await renderSingleCard(city, result, index)
+			card.replaceWith(newCard)
+		})
+	} else {
+		const { temperature: temp, windspeed: wind } = data.current_weather
+
+		card.innerHTML = `
+            <img class="city-image" src="${city.src}" alt="${city.name}" />
+			<div class="city-info-section">
+				<h3>${city.name}</h3>
+				<h4>${city.country}</h4>
+				<p class="temp">${temp}°C</p>
+				<p class="wind">Wind: ${wind} km/h</p>
+			</div>
+        `
+	}
+
+	return card
 }
 
 async function renderCards() {
@@ -48,25 +94,13 @@ async function renderCards() {
 
 	cardsContainer.innerHTML = ""
 
-	cityList.forEach((city, index) => {
-		const data = results[index]
+	const cards = await Promise.all(
+		cityList.map((city, index) =>
+			renderSingleCard(city, results[index], index),
+		),
+	)
 
-		const temp = data.current_weather.temperature
-		const wind = data.current_weather.windspeed
-
-		const card = document.createElement("div")
-		card.classList.add("card")
-
-		card.innerHTML = `
-            <img class="city-image" src="${city.src}" alt="${city.name}" />
-            <h3>${city.name}</h3>
-            <h4>${city.country}</h4>
-            <p class="temp">${temp}°C</p>
-            <p class="wind">Wind: ${wind} km/h</p>
-        `
-
-		cardsContainer.appendChild(card)
-	})
+	cards.forEach((card) => cardsContainer.appendChild(card))
 }
 
 renderCards()

@@ -155,7 +155,7 @@ header .subtitle {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: var(--gap-sm);
+	min-height: 500px;
 	background: white;
 	border-radius: var(--space-4);
 	text-align: center;
@@ -196,4 +196,48 @@ header .subtitle {
 	height: 100%;
 	border-top-left-radius: inherit;
 	border-top-right-radius: inherit;
+}
+
+.city-info-section {
+	display: flex;
+	flex-direction: column;
+	padding: var(--padding-sm);
+}
+
+.error-card {
+	border: 1px solid #fca5a5;
+	background-color: #fef2f2;
+	position: relative;
+}
+
+.error-card .city-image {
+	filter: grayscale(60%) brightness(0.85);
+}
+
+.error-card h3,
+.error-card h4 {
+	color: red;
+}
+
+.error-message {
+	color: red;
+	font-size: var(--font-md);
+}
+
+.retry-btn {
+	background: red;
+	border: solid 2px red;
+	color: white;
+	padding-inline: var(--padding-md);
+	padding-block: var(--padding-xs);
+	border-radius: 16px;
+	cursor: pointer;
+	font-size: var(--font-md);
+}
+
+.retry-btn:hover {
+	background: white;
+	color: red;
+	border: solid 2px red;
+	transition: ease-in-out 0.3s;
 }
