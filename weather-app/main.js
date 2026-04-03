@@ -51,10 +51,16 @@ async function renderSingleCard(city, data, index) {
 	if (data === null) {
 		card.classList.add("error-card")
 		card.innerHTML = `
-            <img class="city-image" src="${city.src}" alt="${city.name}" />
+            <img class="city-image" src="${city.cityPicSrc}" alt="${city.name}" />
 			<div class="city-info-section">
-				<h3>${city.name}</h3>
-				<h4>${city.country}</h4>
+				<div class="city-country-icon-line">
+					<p class="city-name">${city.name}</p>
+
+					<div class="country-name-icon">
+						<p class="country-name">${city.country}</p>
+					</div>
+				</div>
+
 				<p class="error-message">Couldn't load weather data</p>
 				<button class="retry-btn">Retry</button>
 			</div>
@@ -76,10 +82,17 @@ async function renderSingleCard(city, data, index) {
 		const { temperature: temp, windspeed: wind } = data.current_weather
 
 		card.innerHTML = `
-            <img class="city-image" src="${city.src}" alt="${city.name}" />
+            <img class="city-image" src="${city.cityPicSrc}" alt="${city.name}" />
 			<div class="city-info-section">
-				<h3>${city.name}</h3>
-				<h4>${city.country}</h4>
+				<div class="city-country-icon-line">
+					<p class="city-name">${city.name}</p>
+
+					<div class="country-name-icon">
+						<p class="country-name">${city.country}</p>
+						<img class="country-icon" src="${city.countryIconSrc}" alt="${city.country} flag icon" />
+					</div>
+				</div>
+
 				<p class="temp">${temp}°C</p>
 				<p class="wind">Wind: ${wind} km/h</p>
 			</div>
