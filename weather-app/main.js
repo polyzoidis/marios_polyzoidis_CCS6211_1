@@ -4,6 +4,26 @@ const cardsContainer = document.getElementById("cardsContainer")
 
 const cityList = Object.values(cities)
 
+function getWeatherCondition(code) {
+	if (code === 0) return "Clear sky"
+	if (code === 1) return "Mainly clear"
+	if (code === 2) return "Partly cloudy"
+	if (code === 3) return "Overcast"
+	if (code <= 9) return "Foggy"
+	if (code <= 19) return "Drizzle"
+	if (code <= 29) return "Thunderstorm"
+	if (code <= 39) return "Blowing snow"
+	if (code <= 49) return "Fog"
+	if (code <= 59) return "Drizzle"
+	if (code <= 69) return "Rain"
+	if (code <= 79) return "Snow"
+	if (code <= 84) return "Rain showers"
+	if (code <= 86) return "Snow showers"
+	if (code <= 94) return "Thunderstorm"
+	if (code <= 99) return "Thunderstorm with hail"
+	return "Unknown"
+}
+
 function showSkeletons() {
 	cardsContainer.innerHTML = ""
 
@@ -80,6 +100,7 @@ async function renderSingleCard(city, data, index) {
 		})
 	} else {
 		const { temperature: temp, windspeed: wind } = data.current_weather
+		const condition = getWeatherCondition(data.current_weather.weathercode)
 
 		card.innerHTML = `
             <img class="city-image" src="${city.cityPicSrc}" alt="${city.name}" />
@@ -94,6 +115,7 @@ async function renderSingleCard(city, data, index) {
 				</div>
 
 				<p class="temp">${temp}°C</p>
+				<p class="condition">${condition}</p>
 				<p class="wind">Wind: ${wind} km/h</p>
 			</div>
         `

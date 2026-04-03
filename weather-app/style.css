@@ -183,6 +183,12 @@ header .subtitle {
 	margin: 0;
 }
 
+.card .condition {
+	font-size: var(--font-md);
+	color: #666;
+	margin: 0;
+}
+
 .card .temp {
 	font-size: var(--font-2xl);
 	font-weight: bold;
@@ -210,7 +216,7 @@ header .subtitle {
 	padding: var(--padding-xs);
 	box-sizing: border-box;
 	width: 100%;
-	gap: var(--gap-md);
+	gap: var(--gap-sm);
 	justify-content: space-between;
 }
 
