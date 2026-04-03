@@ -52,6 +52,13 @@ body {
 .divider {
 	border-top: 2px solid rgb(0 0 0 / 20%);
 	width: 80%;
+	margin-block: 0;
+}
+
+.card-divider {
+	border-top: 1px solid rgb(0 0 0 / 20%);
+	width: 100%;
+	margin-block: 0;
 }
 
 header {
@@ -183,24 +190,36 @@ header .subtitle {
 	margin: 0;
 }
 
-.card .condition {
-	font-size: var(--font-md);
+.temp {
+	font-size: var(--font-3xl);
+	font-weight: 600;
+	margin: 0;
+}
+
+.temp-label {
+	font-size: var(--font-xl);
 	color: #666;
 	margin: 0;
 }
 
-.card .temp {
-	font-size: var(--font-2xl);
-	font-weight: bold;
-	margin: 0;
+.temp-icon {
+	width: 36px;
+	height: 36px;
 }
 
-.card .wind {
+.temp-outer-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.wind {
 	font-size: var(--font-md);
 	margin: 0;
 }
 
-.card img.city-image {
+img.city-image {
 	width: 100%;
 	flex: 0 0 60%;
 	object-fit: cover;
@@ -220,10 +239,76 @@ header .subtitle {
 	justify-content: space-between;
 }
 
-.city-country-icon-line {
+.city-and-temp-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.city-and-country-container {
 	display: flex;
 	flex-direction: column;
+	align-items: flex-start;
+}
+
+.condition-name-icon-container {
+	display: flex;
+	flex-direction: row;
 	align-items: center;
+	gap: var(--gap-xs);
+}
+
+.condition-label {
+	font-size: var(--font-md);
+	color: #666;
+	margin: 0;
+}
+
+.condition-name {
+	font-size: var(--font-lg);
+	font-weight: 500;
+	margin: 0;
+}
+
+.condition-icon {
+	font-size: var(--font-2xl);
+}
+
+.temp-container {
+	display: flex;
+	flex-direction: row;
+	gap: var(--gap-xxs);
+}
+
+.condition-wind-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.wind-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: var(--gap-xs);
+}
+
+.wind-icon {
+	width: 32px;
+	height: 32px;
+}
+
+.wind-label {
+	font-size: var(--font-2xl);
+	margin: 0;
+}
+
+.wind-unit {
+	font-size: var(--font-lg);
+	margin: 0;
 }
 
 .country-name-icon {
@@ -235,13 +320,13 @@ header .subtitle {
 
 .city-name {
 	font-size: var(--font-2xl);
-	font-weight: 700;
+	font-weight: 600;
 	margin: 0;
 }
 
 .country-name {
-	font-size: var(--font-xl);
-	font-weight: 500;
+	font-size: var(--font-lg);
+	font-weight: 400;
 	color: #666;
 	margin: 0;
 }
@@ -268,7 +353,9 @@ header .subtitle {
 
 .error-message {
 	color: red;
-	font-size: var(--font-md);
+	font-size: var(--font-lg);
+	font-weight: 500;
+	margin: 0;
 }
 
 .retry-btn {

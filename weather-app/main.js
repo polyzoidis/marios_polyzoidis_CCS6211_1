@@ -5,23 +5,23 @@ const cardsContainer = document.getElementById("cardsContainer")
 const cityList = Object.values(cities)
 
 function getWeatherCondition(code) {
-	if (code === 0) return "Clear sky"
-	if (code === 1) return "Mainly clear"
-	if (code === 2) return "Partly cloudy"
-	if (code === 3) return "Overcast"
-	if (code <= 9) return "Foggy"
-	if (code <= 19) return "Drizzle"
-	if (code <= 29) return "Thunderstorm"
-	if (code <= 39) return "Blowing snow"
-	if (code <= 49) return "Fog"
-	if (code <= 59) return "Drizzle"
-	if (code <= 69) return "Rain"
-	if (code <= 79) return "Snow"
-	if (code <= 84) return "Rain showers"
-	if (code <= 86) return "Snow showers"
-	if (code <= 94) return "Thunderstorm"
-	if (code <= 99) return "Thunderstorm with hail"
-	return "Unknown"
+	if (code === 0) return { label: "Clear sky", icon: "☀️" }
+	if (code === 1) return { label: "Mainly clear", icon: "🌤️" }
+	if (code === 2) return { label: "Partly cloudy", icon: "⛅" }
+	if (code === 3) return { label: "Overcast", icon: "☁️" }
+	if (code <= 9) return { label: "Foggy", icon: "🌫️" }
+	if (code <= 19) return { label: "Drizzle", icon: "🌦️" }
+	if (code <= 29) return { label: "Thunderstorm", icon: "⛈️" }
+	if (code <= 39) return { label: "Blowing snow", icon: "🌨️" }
+	if (code <= 49) return { label: "Fog", icon: "🌫️" }
+	if (code <= 59) return { label: "Drizzle", icon: "🌦️" }
+	if (code <= 69) return { label: "Rain", icon: "🌧️" }
+	if (code <= 79) return { label: "Snow", icon: "❄️" }
+	if (code <= 84) return { label: "Rain showers", icon: "🌦️" }
+	if (code <= 86) return { label: "Snow showers", icon: "🌨️" }
+	if (code <= 94) return { label: "Thunderstorm", icon: "⛈️" }
+	if (code <= 99) return { label: "Thunderstorm with hail", icon: "🌩️" }
+	return { label: "Unknown", icon: "🌡️" }
 }
 
 function showSkeletons() {
@@ -73,13 +73,27 @@ async function renderSingleCard(city, data, index) {
 		card.innerHTML = `
             <img class="city-image" src="${city.cityPicSrc}" alt="${city.name}" />
 			<div class="city-info-section">
-				<div class="city-country-icon-line">
-					<p class="city-name">${city.name}</p>
+				<div class="city-and-temp-container">
+					<div class="city-and-country-container">
+						<p class="city-name">${city.name}</p>
 
-					<div class="country-name-icon">
-						<p class="country-name">${city.country}</p>
+						<div class="country-name-icon">
+							<p class="country-name">${city.country}</p>
+							<img class="country-icon" src="${city.countryIconSrc}" alt="${city.country} flag icon" />
+						</div>
+					</div>
+
+					<div class="temp-outer-container">
+						<img class="temp-icon" src="../assets/svgs/thermometer-hot.svg" alt="Temperature icon" />
+
+						<div class="temp-container">
+							<p class="temp">X.X</p>
+							<p class="temp-label">°C</p>
+						</div>
 					</div>
 				</div>
+
+				<hr class="card-divider" />
 
 				<p class="error-message">Couldn't load weather data</p>
 				<button class="retry-btn">Retry</button>
@@ -105,18 +119,40 @@ async function renderSingleCard(city, data, index) {
 		card.innerHTML = `
             <img class="city-image" src="${city.cityPicSrc}" alt="${city.name}" />
 			<div class="city-info-section">
-				<div class="city-country-icon-line">
-					<p class="city-name">${city.name}</p>
+				<div class="city-and-temp-container">
+					<div class="city-and-country-container">
+						<p class="city-name">${city.name}</p>
 
-					<div class="country-name-icon">
-						<p class="country-name">${city.country}</p>
-						<img class="country-icon" src="${city.countryIconSrc}" alt="${city.country} flag icon" />
+						<div class="country-name-icon">
+							<p class="country-name">${city.country}</p>
+							<img class="country-icon" src="${city.countryIconSrc}" alt="${city.country} flag icon" />
+						</div>
+					</div>
+
+					<div class="temp-outer-container">
+						<img class="temp-icon" src="${temp > 20 ? "../assets/svgs/thermometer-hot.svg" : "../assets/svgs/thermometer-cold.svg"}" alt="Temperature icon" />
+
+						<div class="temp-container">
+							<p class="temp">${temp}</p>
+							<p class="temp-label">°C</p>
+						</div>
 					</div>
 				</div>
 
-				<p class="temp">${temp}°C</p>
-				<p class="condition">${condition}</p>
-				<p class="wind">Wind: ${wind} km/h</p>
+				<hr class="card-divider" />
+
+				<div class="condition-wind-container">
+					<div class="condition-name-icon-container">
+						<p class="condition-name">${condition.label}</p>
+						<span class="condition-icon">${condition.icon}</span>
+					</div>
+
+					<div class="wind-container">
+						<img class="wind-icon" src="../assets/svgs/wind-icon.svg" alt="Wind icon" />
+						<p class="wind-label">${wind}</p>
+						<p class="wind-unit">km/h</p>
+					</div>
+				</div>
 			</div>
         `
 	}
