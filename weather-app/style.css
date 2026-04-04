@@ -41,12 +41,31 @@
 	--font-title: 7rem; /* 112px */
 }
 
+/* Responsive styles */
+@media (max-width: 1023px) {
+	:root {
+		--space-unit: 6px;
+
+		/* Font sizes */
+		--font-xs: 0.625rem; /* 10px */
+		--font-sm: 0.75rem; /* 12px */
+		--font-md: 0.875rem; /* 14px */
+		--font-lg: 1rem; /* 16px */
+		--font-xl: 1.125rem; /* 18px */
+		--font-2xl: 1.25rem; /* 20px */
+		--font-3xl: 1.5rem; /* 24px */
+		--font-4xl: 2rem; /* 32px */
+		--font-title: 4rem; /* 64px */
+	}
+}
+
 body {
 	font-family:
 		-apple-system, BlinkMacSystemFont, "Inter", "Roboto", sans-serif;
 	margin: 0;
 	background: #f4f6f8;
 	color: #333;
+	padding-inline: var(--padding-md);
 }
 
 .divider {
@@ -151,13 +170,20 @@ header .subtitle {
 }
 
 .city-cards {
-	padding: var(--padding-lg);
 }
 
 .cards {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: var(--gap-md);
+
+	@media (max-width: 1023px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (max-width: 767px) {
+		grid-template-columns: 1fr;
+	}
 }
 
 .card {
@@ -226,6 +252,10 @@ img.city-image {
 	min-height: 0;
 	border-top-left-radius: inherit;
 	border-top-right-radius: inherit;
+
+	@media (max-width: 1023px) {
+		flex: 0 0 70%;
+	}
 }
 
 .city-info-section {
@@ -237,6 +267,11 @@ img.city-image {
 	width: 100%;
 	gap: var(--gap-sm);
 	justify-content: space-between;
+
+	@media (max-width: 1023px) {
+		flex: 0 0 30%;
+		gap: var(--gap-xs);
+	}
 }
 
 .city-and-temp-container {
@@ -319,6 +354,7 @@ img.city-image {
 }
 
 .city-name {
+	text-align: left;
 	font-size: var(--font-2xl);
 	font-weight: 600;
 	margin: 0;
