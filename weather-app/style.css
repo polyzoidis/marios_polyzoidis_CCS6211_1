@@ -111,7 +111,6 @@ header {
 .title-icon {
 	width: 240px;
 	height: auto;
-	color: black;
 }
 
 header .subtitle {
@@ -142,7 +141,7 @@ header .subtitle {
 
 .about-description {
 	font-size: var(--font-lg);
-	color: #666;
+	opacity: 0.5;
 	margin: 0;
 }
 
@@ -524,4 +523,31 @@ img.city-image {
 .zone-desc {
 	font-size: var(--font-md);
 	opacity: 0.7;
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	padding: var(--padding-xs);
+	margin-bottom: var(--padding-xs);
+	border-radius: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	@media (max-width: 767px) {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--gap-xs);
+	}
+}
+
+.footer-name {
+	font-size: var(--font-sm);
+	font-weight: 500;
+}
+
+.footer-subtitle {
+	font-size: var(--font-sm);
+	opacity: 0.5;
 }
