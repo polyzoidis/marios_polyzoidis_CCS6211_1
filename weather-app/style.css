@@ -231,25 +231,18 @@ header .subtitle {
 	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
-.card h3 {
-	font-size: var(--font-lg);
-	margin: 0;
-}
-
-.card h4 {
-	font-size: var(--font-md);
-	color: #666;
-	margin: 0;
-}
-
 .temp {
-	font-size: var(--font-3xl);
+	font-size: var(--font-2xl);
 	font-weight: 600;
 	margin: 0;
+
+	@media screen and (max-width: 1023px) {
+		font-size: var(--font-3xl);
+	}
 }
 
 .temp-label {
-	font-size: var(--font-xl);
+	font-size: var(--font-lg);
 	color: #666;
 	margin: 0;
 }
@@ -264,11 +257,6 @@ header .subtitle {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-}
-
-.wind {
-	font-size: var(--font-md);
-	margin: 0;
 }
 
 img.city-image {
@@ -381,16 +369,24 @@ img.city-image {
 
 .city-name {
 	text-align: left;
-	font-size: var(--font-2xl);
+	font-size: var(--font-xl);
 	font-weight: 600;
 	margin: 0;
+
+	@media screen and (max-width: 1023px) {
+		font-size: var(--font-2xl);
+	}
 }
 
 .country-name {
-	font-size: var(--font-lg);
+	font-size: var(--font-md);
 	font-weight: 400;
 	color: #666;
 	margin: 0;
+
+	@media screen and (max-width: 1023px) {
+		font-size: var(--font-lg);
+	}
 }
 
 .country-icon {
