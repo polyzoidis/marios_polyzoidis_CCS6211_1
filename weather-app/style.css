@@ -20,6 +20,8 @@
 	--padding-md: var(--space-4);
 	--padding-lg: var(--space-5);
 	--padding-xl: var(--space-6);
+	--padding-2xl: var(--space-7);
+	--padding-3xl: var(--space-8);
 
 	/* Gaps */
 	--gap-xxs: var(--space-0-5);
@@ -111,10 +113,27 @@ header .subtitle {
 
 .about {
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: var(--padding-3xl);
+	gap: var(--gap-lg);
+
+	@media screen and (max-width: 767px) {
+		padding-inline: 0;
+	}
 }
 
-.about h2 {
-	font-size: var(--font-3xl);
+.about-title {
+	font-size: var(--font-2xl);
+	font-weight: 600;
+	margin: 0;
+}
+
+.about-description {
+	font-size: var(--font-lg);
+	color: #666;
+	margin: 0;
 }
 
 .skeleton-card {
@@ -167,9 +186,6 @@ header .subtitle {
 	100% {
 		transform: translateX(500px);
 	}
-}
-
-.city-cards {
 }
 
 .cards {

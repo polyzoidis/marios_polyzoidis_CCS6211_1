@@ -82,15 +82,6 @@ async function renderSingleCard(city, data, index) {
 							<img class="country-icon" src="${city.countryIconSrc}" alt="${city.country} flag icon" />
 						</div>
 					</div>
-
-					<div class="temp-outer-container">
-						<img class="temp-icon" src="../assets/svgs/thermometer-hot.svg" alt="Temperature icon" />
-
-						<div class="temp-container">
-							<p class="temp">X.X</p>
-							<p class="temp-label">°C</p>
-						</div>
-					</div>
 				</div>
 
 				<hr class="card-divider" />
