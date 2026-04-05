@@ -275,7 +275,9 @@ img.city-image {
 	display: flex;
 	flex-direction: column;
 	flex: 0 0 40%;
-	padding: var(--padding-xs);
+	padding-top: var(--padding-xs);
+	padding-bottom: var(--padding-sm);
+	padding-inline: var(--padding-sm);
 	box-sizing: border-box;
 	width: 100%;
 	gap: var(--gap-sm);
@@ -308,8 +310,8 @@ img.city-image {
 }
 
 .condition-label {
-	font-size: var(--font-md);
-	color: #666;
+	font-size: var(--font-lg);
+	opacity: 0.6;
 	margin: 0;
 }
 
@@ -331,10 +333,25 @@ img.city-image {
 
 .condition-wind-container {
 	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.wind-icon-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: var(--gap-xs);
+}
+
+.info-line {
+	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	height: 100%;
+	width: 100%;
 }
 
 .wind-container {
@@ -350,7 +367,7 @@ img.city-image {
 }
 
 .wind-label {
-	font-size: var(--font-2xl);
+	font-size: var(--font-xl);
 	margin: 0;
 }
 

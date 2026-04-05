@@ -133,16 +133,23 @@ async function renderSingleCard(city, data, index) {
 				<hr class="card-divider" />
 
 				<div class="condition-wind-container">
-					<div class="condition-name-icon-container">
-						<p class="condition-name">${condition.label}</p>
-						<span class="condition-icon">${condition.icon}</span>
+					<div class="info-line">
+						<p class="condition-label">Condition:</p>
+						<div class="condition-name-icon-container">
+							<p class="condition-name">${condition.label}</p>
+							<span class="condition-icon">${condition.icon}</span>
+						</div>
 					</div>
 
-					<div class="wind-container">
-						<img class="wind-icon" src="../assets/svgs/wind-icon.svg" alt="Wind icon" />
-						<p class="wind-label">${wind}</p>
-						<p class="wind-unit">km/h</p>
+					<div class="info-line">
+						<p class="condition-label">Wind:</p>
+						<div class="wind-icon-container">
+							<img class="wind-icon" src="../assets/svgs/wind-icon.svg" alt="Wind icon" />
+							<p class="wind-label">${wind}</p>
+							<p class="wind-unit">km/h</p>
+						</div>
 					</div>
+
 				</div>
 			</div>
         `
